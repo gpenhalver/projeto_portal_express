@@ -7,21 +7,31 @@ restaurantes = [{"nome" : "Menu" , "categoria" : "Japonesa", "ativo" :False},
 
 
 def exibir_nome_do_programa():
+    """ Essa funcao exibe o nome do programa"""
+
     print("""
            ▌║█║▌│║▌│║▌║▌█║Sabor Express ▌│║▌║▌│║║▌█║▌║█
           """)
 
 def exibir_menu_opcoes():
+    """ Essa funcao exibe o menu opcoes
+    
+    Outputs:
+    - Lista as opcoes disponiveis ao usuario
+    
+    """
     print("1. Cadastrar restaurante")
     print("2. Listar restaurante")
     print("3. Alternar status do restaurante")
     print("4. Sair\n")
 
 def opcao_invalida():
+    """ Essa funcao exibe se a opcao eh invalida e volta ao menu principal"""
     print("Opcao Invalida!\n")
     voltar_ao_menu_principal()
 
 def exibir_subtitulo(texto):
+    """ Essa funcao exibe o subtitulo"""
     os.system("cls")
     linha = "=" * (len(texto))
     print(linha)
@@ -30,6 +40,16 @@ def exibir_subtitulo(texto):
     print()
 
 def cadastrar_novo_restaurante():
+    """ Essa funcao e responsavel por cadastrar um novo restaurante
+    
+    Inputs:
+    - Nome do Restaurante
+    - Categoria
+
+    Outputs:
+    - Adiciona um novo restaurante a lista de restaurantes
+
+    """
     exibir_subtitulo("Cadastro de novos restaurantes")
     nome_do_restaurante = input("Digite o nome do restaurante que deseja cadastrar: ")
     categoria = input(f"Digite o nome da categoria do restaurante {nome_do_restaurante}:")
@@ -39,6 +59,17 @@ def cadastrar_novo_restaurante():
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
+    """ Essa funcao e responsavel por listar os restaurantes
+    
+    Operador logico:
+    - for para buscar dentro da lista os nomes, categoria e status do restaurante
+
+    Outputs:
+    - Lista os restaurantes cadastrados
+    
+    """
+
+
     exibir_subtitulo("Listando os restaurantes")
 
     print(f"{"Nome do restaurante".ljust(15)} | {"Categoria".ljust(15)} | Status\n")
@@ -51,6 +82,19 @@ def listar_restaurantes():
     voltar_ao_menu_principal()
 
 def alternar_estado_do_restaurante():
+    """ Essa funcao e responsavel por alternar o estado de um restaurante
+    
+    Inputs:
+    - Nome do Restaurante que deseja buscar na lista
+
+    Operador logico:
+    - for para buscar dentro da lista o nome do restaurante e verificar se ele existe ou nao
+
+    Outputs:
+    - Informa que o restaurante foi ativado ou desativado com sucesso
+    
+    """
+
     exibir_subtitulo("Alternando o status do restaurante")
     nome_restaurante = input("Digite o nome do restaurante que deseja alternar o status: ")
     restaurante_encontrado = False
@@ -70,13 +114,34 @@ def alternar_estado_do_restaurante():
     voltar_ao_menu_principal()
 
 def finalizar_app():
+    """ Essa funcao e responsavel por finalizar o app"""
+
     exibir_subtitulo("Finalizar app")
 
 def voltar_ao_menu_principal():
+    """ Essa funcao e responsavel por voltar ao menu principal
+    
+    Input:
+    - Usuario insere uma tecla qualquer para retornar ao menu principal
+    
+    """
+
     input(" Digite uma tecla para voltar ao menu ")
     main()
 
 def escolher_opcao():
+    """ Essa funcao e responsavel por escolher e verificar a opcao
+    
+        Operador logico:
+        - Try para que o usuario escolha uma opcao
+        - If/elif/else para verificar qual opcao o usuario escolheu e assim executar a funcao respectiva
+        - Except para caso a opcao inserida seja invalida
+
+        Inputs:
+        - Opcao escolhida
+
+    """
+
     try:
         opcao_escolhida = int(input("Escolha uma opção: "))
         # opcao_escolhida = int(opcao_escolhida)
@@ -109,6 +174,8 @@ def escolher_opcao():
         opcao_invalida()
 
 def main():
+    """ Essa funcao eh a main def"""
+
     os.system("cls")
     exibir_nome_do_programa()
     exibir_menu_opcoes()
